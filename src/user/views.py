@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from api.models import ProfileConnection
+from api.models import ProfileConnection, Connection, Type
 
 # Create your views here.
 def register(request):
@@ -21,6 +21,7 @@ def login(request):
 
 def account(request):
     user_connections = ProfileConnection.objects.filter(profile__user__username=request.user.username)
+    context_data = {}
     user_data = []
     for connection in user_connections:
         c_type = connection.connection.type_id.connection_type
@@ -29,8 +30,19 @@ def account(request):
             c_type = c_type[8:]
         dataset = f'Your {c_type} include {c_name}'
         user_data.append(dataset)
+    context_data["account"] = user_data
+    all_connections = Connection.objects.all()
+    connection_names = []
+    for connection in all_connections:
+        connection_names.append(connection.name)
+    context_data["dropdown_connections"] = connection_names
+    all_types = Type.objects.all()
+    types = []
+    for t in all_types:
+        types.append(t.connection_type)
+    context_data["dropdown_types"] = types
     context = {
-        "connections":user_data
+        "connections":context_data
     }
     return render(request, 'user/account.html', context)
 

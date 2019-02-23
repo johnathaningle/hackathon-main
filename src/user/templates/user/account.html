@@ -1,20 +1,47 @@
 {% extends 'user/user_base.html' %}
 {% block css %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<style>
+    .connection-item {
+        background-color: #fff;
+        padding: 10px;
+    }
+    
+    .connection-item:hover {
+        background-color: #eee;
+    }
+    .fa-times-circle:hover {
+        color: pink !important;
+    }
+</style>
 {% endblock css %}
 
 {% block content %}
 <div class="container shadow p-5" style="margin-top: 2em;margin-left: auto;margin-right: auto; margin-top: 40px;background: #fff !important;border-radius: 10px;">
-    <h3>Welcome {{ user.username }}</h3>
+    <h3 class="text-center">Welcome {{ user.username }}</h3>
     <div class="border-top pt-3 mt-4">
-        <h5>Your connections:</h5>
+        <h5 class="text-center">Your connections:</h5>
         {% if connections %}
-        <ul class="mt-4">
-            {% for connection in connections %}
-            <li>{{ connection }}</li>
+        <div class="mt-4">
+            {% for connection in connections.account %}
+            <div class="connection-item row">
+                    <div class="col-10 mt-3"><p class="pl-4">{{ connection }}</p></div>
+                    <div class="col-2"><i class="far fa-times-circle" style="color: red;"></i></div>
+            </div>
             {% endfor %}
-        </ul>
-            
+        </div>
+        <h5>Add a Connection</h5>
+        {% for c_name in connections.dropdown_connections %}
+        {% endfor %}
         {% endif %}
     </div>
 </div>
 {% endblock content %}
+
+{% block script %}
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    console.log('ready');
+});
+</script>
+{% endblock script %}

@@ -3,6 +3,7 @@ from user import models as user_models
 # Create your models here.
 class Type(models.Model):
     connection_type = models.CharField(max_length=80)
+    connection_color = models.CharField(max_length=20, default="#fff")
     def __str__(self):
         return self.connection_type
 

@@ -6,3 +6,5 @@ src/dashboard-ui/package\.json
 src/api/\.ipynb_checkpoints/Untitled-checkpoint\.ipynb
 
 *.ipynb
+
+*.zip
