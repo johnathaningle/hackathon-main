@@ -3,10 +3,18 @@
 {% endblock css %}
 
 {% block content %}
-<div class="container shadow p-5" style="margin-top: 2em;margin-left: auto;margin-right: auto;background: #fff !important;border-radius: 10px;">
-    <h4>Welcome {{ user.username }}</h4>
-    <div class="border-top pt-3">
-        <p>Info goes here...</p>
+<div class="container shadow p-5" style="margin-top: 2em;margin-left: auto;margin-right: auto; margin-top: 40px;background: #fff !important;border-radius: 10px;">
+    <h3>Welcome {{ user.username }}</h3>
+    <div class="border-top pt-3 mt-4">
+        <h5>Your connections:</h5>
+        {% if connections %}
+        <ul class="mt-4">
+            {% for connection in connections %}
+            <li>{{ connection }}</li>
+            {% endfor %}
+        </ul>
+            
+        {% endif %}
     </div>
 </div>
 {% endblock content %}
