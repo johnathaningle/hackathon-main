@@ -1,1 +1,1 @@
-hackathon-main
+django-hackathon-starter2

@@ -1,0 +1,4 @@
+
+*.pyc
+
+src/dashboard-ui/package\.json
