@@ -10,30 +10,25 @@ document.addEventListener("DOMContentLoaded", function () {
             data = this.responseText;
             parsed_data = JSON.parse(data);
             var node_list={};
+            var main_node;
             console.log(parsed_data.node_list);
-            parsed_data.node_list.forEach(name => {
-              let node = graph.newNode({label: name});
-              node_list.name = node;
-            });
+            for (let i = 0; i < parsed_data.node_list.length; i++) {
+              if (i ==0) {
+                username = parsed_data.node_list[i];
+                main_node = graph.newNode({label: username});
+              }
+            }
             
             parsed_data.connections.forEach(relationship => {
-              var node1;
               var node2;
-              let name1 = relationship[0];
               let name2 = relationship[1];
-              if (Object.values(node_list).indexOf(name1) < 0) {
-                node1 = graph.newNode({label: name1});
-                node_list[name1] = node1;
-              } else {
-                node1 = Object.values(node_list).indexOf(name1); 
-              }
               if (Object.values(node_list).indexOf(name2) < 0) {
                 node2 = graph.newNode({label: name2});
                 node_list[name2] = node2;
               } else {
                 node2 = Object.values(node_list).indexOf(name2); 
               }
-              graph.newEdge(node1, node2);
+              graph.newEdge(main_node, node2);
               
             });
             console.log(node_list);
