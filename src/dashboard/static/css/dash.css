@@ -1,0 +1,13 @@
+.connects {
+    margin-top: 2em;
+    height: 500px;
+    /* background: #c5a990 !important; */
+    border-radius: 10px;
+    padding: 0px;
+    border: 1px solid grey;
+}
+
+canvas {
+    z-index: 10;
+    position: relative;
+}
