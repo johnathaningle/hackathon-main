@@ -4,3 +4,5 @@ from . import models
 admin.site.register(models.Connection)
 admin.site.register(models.Type)
 admin.site.register(models.ProfileConnection)
+admin.site.register(models.Friend)
+admin.site.register(models.Box)

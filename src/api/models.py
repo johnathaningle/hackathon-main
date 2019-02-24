@@ -22,7 +22,7 @@ class ProfileConnection(models.Model):
         return f"{self.profile.user.username} Connection: {self.connection.name}, {self.connection.type_id}"
 
 
-class Friends(models.Model):
+class Friend(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     user1 = models.ForeignKey(User, related_name="friendship_creator_set",on_delete=models.CASCADE)
     user2 = models.ForeignKey(User, related_name="friendship_set", on_delete=models.CASCADE)
@@ -30,6 +30,7 @@ class Friends(models.Model):
 
 class Box(models.Model):
     name = models.CharField(max_length=100)
+    max_people = models.IntegerField(default=0)
     start_time = models.DateTimeField(auto_now=True, auto_now_add=False)
     end_time = models.DateTimeField(auto_now=True, auto_now_add=False)
     host = models.ForeignKey(User, related_name="box_creator", on_delete=models.CASCADE)
