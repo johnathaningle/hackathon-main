@@ -1,5 +1,7 @@
 from django.db import models
 from user import models as user_models
+from django.contrib.auth.models import User
+
 # Create your models here.
 class Type(models.Model):
     connection_type = models.CharField(max_length=80)
@@ -18,4 +20,18 @@ class ProfileConnection(models.Model):
     connection = models.ForeignKey(Connection, on_delete=models.CASCADE)
     def __str__(self):
         return f"{self.profile.user.username} Connection: {self.connection.name}, {self.connection.type_id}"
+
+
+class Friends(models.Model):
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    user1 = models.ForeignKey(User, related_name="friendship_creator_set",on_delete=models.CASCADE)
+    user2 = models.ForeignKey(User, related_name="friendship_set", on_delete=models.CASCADE)
+
+
+class Box(models.Model):
+    name = models.CharField(max_length=100)
+    start_time = models.DateTimeField(auto_now=True, auto_now_add=False)
+    end_time = models.DateTimeField(auto_now=True, auto_now_add=False)
+    host = models.ForeignKey(User, related_name="box_creator", on_delete=models.CASCADE)
+    attendees = models.ManyToManyField(User)
     
