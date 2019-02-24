@@ -30,6 +30,8 @@ class Friend(models.Model):
 
 class Box(models.Model):
     name = models.CharField(max_length=100)
+    category = models.CharField(max_length=100, default="Meetup")
+    description = models.TextField(default="Come meet up, we are pretty awesome.")
     max_people = models.IntegerField(default=0)
     start_time = models.DateTimeField(auto_now=True, auto_now_add=False)
     end_time = models.DateTimeField(auto_now=True, auto_now_add=False)

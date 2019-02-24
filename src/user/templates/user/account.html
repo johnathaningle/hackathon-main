@@ -1,10 +1,11 @@
 {% extends 'user/user_base.html' %}
 {% block css %}
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous">
 <style>
     .connection-item {
         background-color: #fff;
-        padding: 10px;
+        padding: 5px;
     }
     
     .connection-item:hover {
@@ -20,19 +21,38 @@
 <div class="container shadow p-5" style="margin-top: 2em;margin-left: auto;margin-right: auto; margin-top: 40px;background: #fff !important;border-radius: 10px;">
     <h3 class="text-center">Welcome {{ user.username }}</h3>
     <div class="border-top pt-3 mt-4">
-        <h5 class="text-center">Your connections:</h5>
+        <h5 class="">Your connections:</h5>
         {% if connections %}
-        <div class="mt-4">
+        <div class="">
             {% for connection in connections.account %}
             <div class="connection-item row">
-                    <div class="col-10 mt-3"><p class="pl-4">{{ connection }}</p></div>
-                    <div class="col-2"><i class="far fa-times-circle" style="color: red;"></i></div>
+                <div class="col-10 mt-3">
+                    <p class="pl-4">{{ connection }}</p>
+                </div>
+                <div class="col-2"><i class="far fa-times-circle" style="color: red;"></i></div>
             </div>
             {% endfor %}
         </div>
-        <h5>Add a Connection</h5>
-        {% for c_name in connections.dropdown_connections %}
-        {% endfor %}
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample">
+            Add a Connection
+        </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <h4>Create a connection</h4>
+                <p>Popular Connections:</p>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option value="none">""</option>
+                    {% for c_name in connections.dropdown_connections %}
+                    <option value="{{ c_name }}">{{ c_name }}</option>
+                    {% endfor %}
+                </select>
+                <p class="mt-3">Custom:</p>
+                <input type="text" class="form-control">
+                <button class="btn btn-primary mt-4 form-control">Add Connection</button>
+            </div>
+        </div>
         {% endif %}
     </div>
 </div>
@@ -40,8 +60,8 @@
 
 {% block script %}
 <script>
-document.addEventListener('DOMContentLoaded', function(){
-    console.log('ready');
-});
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log('ready');
+    });
 </script>
 {% endblock script %}

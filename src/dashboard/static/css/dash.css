@@ -1,10 +1,38 @@
 .connects {
-    margin-top: 2em;
+    margin-top: 30px;
     height: 500px;
     /* background: #c5a990 !important; */
     border-radius: 10px;
-    padding: 0px;
+    padding: 20px;
     border: 1px solid grey;
+}
+
+.main-text {
+    font-size: 40px;
+}
+
+.box-facts-container {
+    top: 30px;
+    padding: 20px;
+    margin: 0 auto;
+    background: white;
+    border: 3px solid #000;
+}
+
+.box-main {
+    margin-top: 40px;
+    padding: 30px;
+    width: auto;
+    border-radius: 10px;
+    border: 1px solid grey;
+}
+
+.box-container {
+    padding-left: 20px;
+}
+
+.qr img {
+    height: 90px;
 }
 
 canvas {
