@@ -6,10 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const request = new XMLHttpRequest();
     request.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+            var username;
             var graph = new Springy.Graph();
             data = this.responseText;
             parsed_data = JSON.parse(data);
             var node_list={};
+            var connections_objects = {};
             var main_node;
             console.log(parsed_data.node_list);
             for (let i = 0; i < parsed_data.node_list.length; i++) {
@@ -20,15 +22,24 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             
             parsed_data.connections.forEach(relationship => {
-              var node2;
               let name2 = relationship[1];
+              let label = relationship[2].label;
+              if (Object.values(connections_objects).indexOf(relationship[2].label) < 0) {
+                connections_objects.label = [];
+                connections_objects.label.push(username)
+                connections_objects.label.push(name2)
+              } else {
+                connections_objects.label.push(name2)
+              }
+              var node2;
               if (Object.values(node_list).indexOf(name2) < 0) {
                 node2 = graph.newNode({label: name2});
                 node_list[name2] = node2;
               } else {
                 node2 = Object.values(node_list).indexOf(name2); 
               }
-              graph.newEdge(main_node, node2);
+              console.log(relationship[2].color);
+              graph.newEdge(main_node, node2, {color: "#000", label: relationship[2].label});
               
             });
             console.log(node_list);

@@ -2,12 +2,34 @@
 {% load static %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/dash.css'%}">
+<style>
+    .main-text {
+        font-size: 40px;
+    }
+</style>
 {% endblock css %}
 
 {% block content %}
 <h2 class="mt-4">My Connects</h2>
 <div class="container-fluid connects shadow mt-4" style="background: linear-gradient(0deg,rgba(248, 248, 248, 0.3),rgba(126, 126, 126, 0.3)),url({% static 'img/cardboard.jpg' %}) no-repeat center center;background-size: cover">
     <canvas id="springydemo" height="auto" width="auto"></canvas>
+</div>
+<div class="container-fluid connects shadow" style="background: linear-gradient(0deg,rgba(248, 248, 248, 0.3),rgba(126, 126, 126, 0.3)),url({% static 'img/cardboard.jpg' %}) no-repeat center center;background-size: cover">
+    <h2 class="mt-4 text-center main-text">Lets Play Fortnite</h2>
+    <div class="row container">
+        <div class="col-md-4 p-6 text-center">
+            <ul>
+                <li><h3>Attendee</h3></li>
+                <li><h3>Attendee</h3></li>
+                <li><h3>Attendee</h3></li>
+                <li><h3>Attendee</h3></li>
+                <li><h3>Attendee</h3></li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div>
 </div>
 {% endblock content %}
 {% block script %}

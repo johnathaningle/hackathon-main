@@ -115,8 +115,6 @@ Copyright (c) 2010 Dennis Hotson
                 dragged.point.p.x = p.x;
                 dragged.point.p.y = p.y;
             }
-    
-            renderer.start();
         });
     
         jQuery(window).bind('mouseup',function(e) {
@@ -140,7 +138,7 @@ Copyright (c) 2010 Dennis Hotson
         };
     
         var getTextHeight = function(node) {
-            return 16;
+            return 20;
             // In a more modular world, this would actually read the font size, but I think leaving it a constant is sufficient for now.
             // If you change the font size, I'd adjust this too.
         };
