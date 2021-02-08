@@ -7,7 +7,7 @@ django-crispy-forms==1.7.2
 django-rest-framework==0.1.0
 django-webpack-loader==0.6.0
 djangorestframework==3.9.1
-httplib2==0.12.1
+httplib2==0.19.0
 idna==2.8
 oauth2==1.9.0.post1
 PyJWT==1.7.1
